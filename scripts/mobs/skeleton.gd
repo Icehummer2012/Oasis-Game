@@ -2,7 +2,6 @@ extends CharacterBody2D
 class_name Mobs
 
 # Переменные
-@onready var player = get_parent().get_node("Player")
 @onready var anim = $AnimatedSprite2D
 var speed = 50 + Global.stage_game
 var damage_mobs = 1 + Global.stage_game
@@ -11,11 +10,21 @@ var shoot_cd = false
 var rate_of_fire = 0.25
 var all_target_player = []
 var life = true
+var players = []
 
 # Сигналы
 signal killed
 
 # Основная функция
+func _ready():
+	# Ищем всех игроков в группе "players"
+	players = get_tree().get_nodes_in_group("players")
+	if players.size() == 0:
+		print("No players found")
+	else:
+		print("Players found: ", players.size())
+
+# Основная функция физического процесса
 func _physics_process(_delta):
 	if life:
 		walking()
@@ -24,11 +33,21 @@ func _physics_process(_delta):
 
 # Передвижение моба
 func walking():
-	if player != null:
-		var direction = (player.position - position).normalized()
-		velocity = direction * speed
-		anim.flip_h = direction.x < 0
-		anim.play("Walk")
+	if players.size() > 0:
+		# Ищем ближайшего игрока
+		var nearest_player = null
+		var nearest_distance = INF
+		for player in players:
+			var distance = global_position.distance_to(player.global_position)
+			if distance < nearest_distance:
+				nearest_distance = distance
+				nearest_player = player
+
+		if nearest_player != null:
+			var direction = (nearest_player.global_position - global_position).normalized()
+			velocity = direction * speed
+			anim.flip_h = direction.x < 0
+			anim.play("Walk")
 
 # Атака
 func attack():
@@ -62,3 +81,4 @@ func _on_Area2D_body_entered(body):
 func _on_Area2D_body_exited(body):
 	if body is Player:
 		all_target_player.erase(body)
+ц

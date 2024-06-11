@@ -35,7 +35,7 @@ label_settings = SubResource("LabelSettings_an4xq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Time" type="Label" parent="VBoxContainer"]
+[node name="TimeLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "60"
 label_settings = SubResource("LabelSettings_pfgwg")

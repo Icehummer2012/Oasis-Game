@@ -171,7 +171,7 @@ radius = 8.24621
 [sub_resource type="CircleShape2D" id="CircleShape2D_pinx7"]
 radius = 66.3407
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["players"]]
 light_mask = 2
 z_index = 4
 scale = Vector2(2.9546, 2.9546)

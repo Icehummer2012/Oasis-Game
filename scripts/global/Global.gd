@@ -2,11 +2,12 @@ extends Node
 class_name GlobalManager
 
 # Глобальные переменные
+var speed_player = 200
 var stage_game = 1
 var location = "village"
 var points = 0
 var score = 0
-var hp = 100  # Добавьте эту строку, если ее нет
+var hp = 100
 
 # Глобальные функции
 func reset_game():
