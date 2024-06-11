@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6kl0tto1aowx"]
+
+[ext_resource type="Script" path="res://scripts/ui/game_over.gd" id="1_l0lg2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r32rw"]
+bg_color = Color(0.345098, 0.65098, 0.721569, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_r2bb5"]
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cwryh"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[node name="Game_Over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l0lg2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -345.0
+offset_top = -253.0
+offset_right = 345.0
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r32rw")
+
+[node name="Game_Over" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 55.0
+offset_bottom = 138.0
+grow_horizontal = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_r2bb5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -86.5
+offset_bottom = -17.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Убил: 0"
+label_settings = SubResource("LabelSettings_cwryh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -273.0
+offset_top = 53.0
+offset_right = 264.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+text = "Restart"
+
+[connection signal="pressed" from="Panel/Restart" to="." method="_on_restart_pressed"]
