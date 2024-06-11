@@ -3,7 +3,7 @@ class_name Player
 
 # ЗАГРУЗКА СЦЕН:
 @onready var InteractLabel = $Interaction/InteractLabel
-@onready var Controle = $"../../UILayer/Control"
+@onready var Controle = $"../../Interface/Control"
 @onready var laser_scene = preload("res://scenes/shot.tscn")
 
 # СИГНАЛЫ:
